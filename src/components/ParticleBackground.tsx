@@ -31,7 +31,7 @@ const ParticleBackground: React.FC = () => {
 
     // Create particles
     const createParticles = () => {
-      const numParticles = Math.floor((canvas.width * canvas.height) / 15000);
+      const numParticles = Math.floor((canvas.width * canvas.height) / 1500);
       particles.length = 0;
 
       for (let i = 0; i < numParticles; i++) {
