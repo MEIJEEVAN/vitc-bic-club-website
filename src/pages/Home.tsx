@@ -18,9 +18,17 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             transition={{ duration: 0.8 }}
             className="font-mono text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
           >
-            Business Innovation Community Club - VIT Chennai
+            Business Innovation Community Club
           </motion.h1>
-          
+          <motion.h2
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+  className="font-mono text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+>
+  <span className="text-black">VIT Chennai</span>
+</motion.h2>
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
