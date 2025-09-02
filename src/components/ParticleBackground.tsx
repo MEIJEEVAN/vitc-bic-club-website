@@ -41,7 +41,7 @@ const ParticleBackground: React.FC = () => {
           vx: (Math.random() - 0.5) * 0.5,
           vy: (Math.random() - 0.5) * 0.5,
           size: Math.random() * 2 + 1,
-          opacity: Math.random() * 0.8 + 0.2
+          opacity: Math.random() * 0.4 + 0.2 // softer opacity
         });
       }
     };
@@ -64,27 +64,27 @@ const ParticleBackground: React.FC = () => {
         if (particle.y < 0) particle.y = canvas.height;
         if (particle.y > canvas.height) particle.y = 0;
 
-        // Draw particle
+        // Draw particle (light gray dots)
         ctx.save();
         ctx.globalAlpha = particle.opacity;
-        ctx.fillStyle = '#9CA3AF';
+        ctx.fillStyle = '#E5E7EB'; // light gray
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         ctx.fill();
         ctx.restore();
 
-        // Draw connections
+        // Draw connections (subtle purple lines)
         particles.slice(i + 1).forEach(otherParticle => {
           const dx = particle.x - otherParticle.x;
           const dy = particle.y - otherParticle.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
           if (distance < 120) {
-            const opacity = (1 - distance / 120) * 0.3;
+            const opacity = (1 - distance / 120) * 0.2;
             ctx.save();
             ctx.globalAlpha = opacity;
-            ctx.strokeStyle = '#9CA3AF';
-            ctx.lineWidth = 0.5;
+            ctx.strokeStyle = '#A78BFA'; // purple accent
+            ctx.lineWidth = 0.6;
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(otherParticle.x, otherParticle.y);
@@ -108,7 +108,9 @@ const ParticleBackground: React.FC = () => {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
-      style={{ background: 'radial-gradient(ellipse at center, #ffffff 0%, #f8fafc 100%)' }}
+      style={{
+        background: '#FFFFFF' // clean white background
+      }}
     />
   );
 };
